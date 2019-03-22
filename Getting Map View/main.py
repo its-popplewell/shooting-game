@@ -21,13 +21,16 @@ y = 6  #player y
 
 view_diff = int((wanted_view_size - 1) / 2)  #the num of cells on each side of the player
 
-view_map = []
+view_map = []  #this will become the view window
+
+#for the y with the player centered
 for i in range(y - view_diff, y + view_diff + 1):
     row = []
+    #for the x with the player centered
     for j in range(x - view_diff, x + view_diff + 1):
         row.append(map[i][j])
 
     view_map.append(row)
 
-for rows in view_map:
-    print(rows)
+# for rows in view_map:
+#     print(rows)
