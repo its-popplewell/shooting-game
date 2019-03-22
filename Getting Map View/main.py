@@ -15,11 +15,11 @@ map  = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
 
-wanted_view_size = 5
-x = 6
-y = 6
+wanted_view_size = 5  #how wide you want the player to be - MUST BE ODD NUM >= 3
+x = 6  #player x
+y = 6  #player y
 
-view_diff = int((wanted_view_size - 1) / 2)
+view_diff = int((wanted_view_size - 1) / 2)  #the num of cells on each side of the player
 
 view_map = []
 for i in range(y - view_diff, y + view_diff + 1):
