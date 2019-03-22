@@ -21,6 +21,11 @@ y = 6  #player y
 
 view_diff = int((wanted_view_size - 1) / 2)  #the num of cells on each side of the player
 
+y_min = 0 + view_diff  #if y is <= this then move player not screen
+y_max = len(map) - view_diff  #if y is >= this then move player not screen
+x_min = 0 + view_diff  #if xxx is >= this then move player not screen
+x_max = len(map[0]) - view_diff  #if xxx is >= this then move player not screen
+
 view_map = []  #this will become the view window
 
 #for the y with the player centered
