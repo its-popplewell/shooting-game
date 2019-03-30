@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #main.py
 '''
-all my comments/questions are docstrings that start w 'JS', so you can just 
+all my comments/questions are docstrings that start w 'JS', so you can just
 cmd+F 'JS' and you'll find them
 
 Changes:
@@ -40,8 +40,7 @@ os.system('defaults write -g ApplePressAndHoldEnabled -bool false')  #for key re
 
 p = 'p'
 z = 'z'
-d = 'd' # thought about adding doors that only players can go through?
-# (y, x)
+
         #0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11
 map  = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # 0
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # 1
@@ -70,6 +69,7 @@ FRAME_COUNT = 0
 # Functions #
 #############
 
+#create canvas and root object
 def create_canvas(w=600, h=600, bg="black", title="Untitled"):
     global width, height
     width = w
@@ -113,11 +113,13 @@ def loop():
         while bullet_it < len(bullets):
             b = bullets[bullet_it]
 
+            #check to see if bullets hit walls
             for w in wall_coors:
                 if abs(b.draw_x - w[0]) < SCALE/2 and abs(b.draw_y - w[1]) < SCALE/2:
                     del bullets[bullet_it]
                     break
 
+            #check to see if bullets hit zombies
             for z in zombies:
                 if abs(b.draw_x - z.x) < SCALE/2 and abs(b.draw_y - z.y) < SCALE/2:
                     del bullets[bullet_it]
@@ -135,7 +137,6 @@ def loop():
             b.update()
             b.draw()
 
-    '''JS not sure what this bit was for but didn't want to ruin anything by deleting it'''
     for z in zombies:
         # z.take_damage()
         z.seek_player(p, map, FRAME_COUNT)
@@ -153,7 +154,7 @@ def loop():
 if __name__ == "__main__":
     #create canvas
     root, canvas = create_canvas(C_WIDTH, C_HEIGHT, bg="white", title="Zombie Survival")
-    root.focus_set() 
+    root.focus_set()
     '''JS What does this(above) do?'''
 
     g = Grid(canvas, C_HEIGHT, C_WIDTH, map)  #create grid
@@ -183,8 +184,6 @@ root.mainloop()
 os.system('defaults write -g ApplePressAndHoldEnabled -bool true')
 
 ####################################################################################
-
-
 
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #Grid.py
 '''
-all my comments/questions are docstrings that start w 'JS', so you can just 
+all my comments/questions are docstrings that start w 'JS', so you can just
 cmd+F 'JS' and you'll find them
 
 Changes:
@@ -28,7 +28,7 @@ class Grid:
         self.SCALE = self.C_WIDTH / self.MAP_WIDTH
         self.canvas = canvas
 
-        #automatically load map
+        #automatically load map into a usable state
         for i in range(self.MAP_HEIGHT):
             for j in range(self.MAP_WIDTH):
                 if map[i][j] == 1:
@@ -39,11 +39,13 @@ class Grid:
                     self.player_spawn = (i, j)
 
     def draw(self):
+        #draw vertical and horizontal lines
         for i in range(self.MAP_WIDTH):
             self.canvas.create_line(i * self.SCALE, 0, i * self.SCALE, self.C_HEIGHT, fill="#000000")
         for i in range(self.MAP_HEIGHT):
             self.canvas.create_line(0, i * self.SCALE, self.C_WIDTH, i * self.SCALE, fill="#000000")
 
+        #draw walls as black rects
         for i in range(len(self.wall_coors)):
             self.canvas.create_rectangle(
                 self.wall_coors[i][0] - self.SCALE/2,
@@ -52,5 +54,6 @@ class Grid:
                 self.wall_coors[i][1] + self.SCALE/2,
                 fill="#000000")
 
+    #get info from grid needed for animation
     def get_grid_info(self):
         return self.wall_coors, self.player_spawn
